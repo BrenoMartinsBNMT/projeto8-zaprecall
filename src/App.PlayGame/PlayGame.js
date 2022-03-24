@@ -1,5 +1,8 @@
+import { useState } from 'react';
 import logo from '../Assets/logo.svg';
 import ZapCard from './zapCards';
+import ZapFooter from './zapFooter';
+
 let questions = [
   {
     pergunta: 'O que é JSX?',
@@ -39,8 +42,11 @@ function fisherYatesShuffle(arr) {
 
 fisherYatesShuffle(questions);
 export default function PlayGame(props) {
+  let [count, setCount] = useState(0);
   let counter = 0;
-
+  function a() {
+    setCount(count + 1);
+  }
   return (
     <div className="game-started">
       <div className="logo-nav">
@@ -51,6 +57,7 @@ export default function PlayGame(props) {
         counter++;
         return (
           <ZapCard
+            test={a}
             key={element.pergunta}
             numberQuestion={'pergunta ' + counter}
             textQuestion={element.pergunta}
@@ -58,6 +65,7 @@ export default function PlayGame(props) {
           />
         );
       })}
+      <ZapFooter number={count} />
     </div>
   );
 }

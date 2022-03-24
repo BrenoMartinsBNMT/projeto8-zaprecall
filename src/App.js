@@ -6,7 +6,6 @@ export default function App(props) {
   let [gameStarted, setGameStarted] = useState(false);
   function startGame() {
     setGameStarted(true);
-    console.log(gameStarted);
   }
   return (
     <div className="Start-Game">
