@@ -43,9 +43,12 @@ function fisherYatesShuffle(arr) {
 fisherYatesShuffle(questions);
 export default function PlayGame(props) {
   let [count, setCount] = useState(0);
+  let [icons, setIcons] = useState([]);
   let counter = 0;
-  function a() {
+
+  function setInfosFooter(ie) {
     setCount(count + 1);
+    setIcons([...icons, ie]);
   }
   return (
     <div className="game-started">
@@ -57,7 +60,7 @@ export default function PlayGame(props) {
         counter++;
         return (
           <ZapCard
-            test={a}
+            functionProps={setInfosFooter}
             key={element.pergunta}
             numberQuestion={'pergunta ' + counter}
             textQuestion={element.pergunta}
@@ -65,7 +68,7 @@ export default function PlayGame(props) {
           />
         );
       })}
-      <ZapFooter number={count} />
+      <ZapFooter number={count} icons={icons} />
     </div>
   );
 }

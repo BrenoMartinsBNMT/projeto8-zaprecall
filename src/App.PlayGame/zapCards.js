@@ -13,7 +13,7 @@ export default function ZapCard(props) {
   let [lineThrough, setLineThrough] = useState('');
   let [disable, setDisable] = useState(false);
 
-  let test = props.test;
+  let functionProps = props.functionProps;
   function setDisplayInfos() {
     if (isButtonPressed === false && isQuestionAnswerd === false) {
       setIsQuestionAnswerd(true);
@@ -27,7 +27,6 @@ export default function ZapCard(props) {
   }
 
   function setDisplayNoneInfos(e) {
-    console.log(e);
     if (e.target.value === 'red') {
       setIsQuestionAnswerd(false);
       setIsButtonPressed(false);
@@ -36,7 +35,7 @@ export default function ZapCard(props) {
       setZapAnswers(false);
       setLineThrough('line-through-red');
 
-      test();
+      functionProps(red);
     }
     if (e.target.value === 'orange') {
       setIsQuestionAnswerd(false);
@@ -44,7 +43,7 @@ export default function ZapCard(props) {
       setButtonsIcons(orange);
       setZapAnswers(false);
       setLineThrough('line-through-orange');
-      test();
+      functionProps(orange);
     }
     if (e.target.value === 'green') {
       setIsQuestionAnswerd(false);
@@ -52,7 +51,7 @@ export default function ZapCard(props) {
       setButtonsIcons(green);
       setZapAnswers(false);
       setLineThrough('line-through-green');
-      test();
+      functionProps(green);
     }
   }
 
